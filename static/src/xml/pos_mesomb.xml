@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="MeSombTransactionPopupWidget">
+    <div role="dialog" class="modal-dialog">
+      <div class="popup">
+        <p class="title">MeSomb Payment</p>
+          <p class="body"></p>
+      </div>
+    </div>
+  </t>
+
+    <t t-name="MeSombButton">
+        <div class='control-button'>
+            <i class='fa fa-wifi'/>
+            MeSomb
+        </div>
+    </t>
+    <!--<t t-extend="PaymentScreenWidget">
+        <t t-jquery=".next" t-operation="after">
+            <span class="button in_mesomb_transaction" style="right: 0px; margin-right: 150px;">
+                <img src="/web/static/src/img/spin.png"
+                     style="animation: fa-spin 1s infinite steps(12);width: 20px;height: auto;vertical-align: middle; "/>
+            </span>
+        </t>
+    </t>-->
+    <t t-name="MeSombPopupWidget">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup popup-textinput popup-mobile-payment">
+                <header class="title"><t t-esc=" widget.options.title || '' " /></header>
+                <form class="body" id="mesomb-form">
+                    <t t-if="widget.options.countries">
+                        <div class='client-detail mesomb-form-field'>
+                            <label for="mesomb_country" class="label" style="width: 30%; line-height: 44px;">Country</label>
+                            <select id="mesomb_country" class='popup-input' name='country' style="width: 70%;" required="required">
+                                <t t-foreach="widget.options.countries || []" t-as="country">
+                                    <option t-att-value='country.value'>
+                                        <t t-esc='country.label'/>
+                                    </option>
+                                </t>
+                            </select>
+                        </div>
+                    </t>
+                    <div class='client-detail mesomb-form-field'>
+                        <label for="mesomb_service" class="label" style="width: 30%; line-height: 44px;">Service</label>
+                        <select id="mesomb_service" class='popup-input' name='service' style="width: 70%;" required="required">
+                            <t t-foreach="widget.options.services || []" t-as="service">
+                                <option t-att-value='service.value'>
+                                    <t t-esc='service.label'/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class='client-detail mesomb-form-field'>
+                        <label for="mesomb_payer" class="label"
+                               style="width: 30%; line-height: 44px;">Phone Number</label>
+                        <input id="mesomb_payer" name="payer" type='tel' style="width: 70%;" required="required"/>
+                    </div>
+                </form>
+                <div class="footer">
+                    <div class="button confirm">
+                        Send
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <!--<t t-extend="PaymentScreenWidget">
+        <t t-jquery=".payment-buttons" t-operation="append">
+            <div class='button js_change_mesomb'>
+                <i class='fa fa-archive'/>
+                Change mesomb
+            </div>
+        </t>
+    </t>-->
+
+    <t t-extend="PaymentScreen-Paymentlines">
+        <t t-jquery=".col-name" t-operation="inner">
+          <t t-if="line.cashregister.journal.mesomb_payment_terminal">
+            <t t-if="line.mesomb_validate_pending">
+              <div>WAITING VALIDATION</div>
+            </t>
+              <t t-if="! line.mesomb_validate_pending">
+              <t t-esc='line.name'/>
+            </t>
+          </t>
+            <t t-if="!line.cashregister.journal.mesomb_payment_terminal">
+            <t t-esc='line.name'/>
+          </t>
+        </t>
+        <t t-jquery="tbody tr.paymentline.selected">
+          this.removeAttr('class');
+          this.attr('t-attf-class', 'paymentline selected #{line.mesomb_validate_pending ? \'o_pos_mesomb_validate_pending\' : \'\'}');
+        </t>
+        <t t-jquery="tbody tr.paymentline[t-att-data-cid*='line.cid']">
+          this.removeAttr('class');
+          this.attr('t-attf-class', 'paymentline #{line.mesomb_validate_pending ? \'o_pos_mesomb_validate_pending\' : \'\'}');
+        </t>
+        <t t-jquery="tbody tr td.col-tendered.edit">
+          this.removeAttr('class');
+          this.attr('t-attf-class', 'col-tendered edit #{line.mesomb_validate_pending ? \'o_pos_mesomb_validate_pending\' : \'\'}');
+        </t>
+      </t>
+
+    <t t-name="PosMeSombSignature">
+        <t t-foreach="paymentlines" t-as="paymentline">
+          <t t-if="paymentline.mesomb_data &amp;&amp; ! printed_signature">
+            <br/>
+              <div>PAYMENT POWERED BY MESOMB</div>
+              <t t-set="printed_signature" t-value="true"/>
+          </t>
+        </t>
+    </t>
+
+    <t t-extend="PosTicket">
+        <t t-jquery="t[t-foreach*='paymentlines'][t-as*='line']" t-operation="append">
+          <tr>
+            <td colspan="2">
+              <t t-if="line.mesomb_data">
+                &amp;nbsp;&amp;nbsp;Service: <t t-esc="line.mesomb_service_name"/><br/>
+                &amp;nbsp;&amp;nbsp;Phone Number: <t t-esc="line.mesomb_payer"/>
+              </t>
+            </td>
+          </tr>
+        </t>
+        <t t-jquery="t[t-if*='receipt.footer']" t-operation="after">
+          <div class="pos-center-align">
+            <t t-call="PosMeSombSignature"/>
+          </div>
+        </t>
+    </t>
+</templates>

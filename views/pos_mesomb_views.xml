@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_account_journal_pos_user_form" model="ir.ui.view">
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="point_of_sale.view_account_journal_pos_user_form"/>
+        <field name="arch" type="xml">
+            <group name="amount_authorized" position="after">
+                <group name="payment_mode_group" attrs="{'invisible': [('type', '!=', 'cash')]}">
+                    <field name="mesomb_payment_terminal"/>
+                    <field name="mesomb_app_key" attrs="{'invisible': [('mesomb_payment_terminal', '=', False)], 'required': [('mesomb_payment_terminal', '=', True)]}" />
+                    <field name="mesomb_currency_conversion" attrs="{'invisible': [('mesomb_payment_terminal', '=', False)], 'required': [('mesomb_payment_terminal', '=', True)]}" />
+                    <field name="mesomb_include_fees" attrs="{'invisible': [('mesomb_payment_terminal', '=', False)], 'required': [('mesomb_payment_terminal', '=', True)]}" />
+                    <field name="mesomb_test_mode" password="True" attrs="{'invisible': [('mesomb_payment_terminal', '=', False)], 'required': [('mesomb_payment_terminal', '=', True)]}" />
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>
