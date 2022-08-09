@@ -120,17 +120,19 @@ odoo.define("pos_mesomb.screens", function (require) {
             this._super(options);
 
             this.renderElement();
-            this.$('input,textarea').focus();
+            this.$('input,textarea')[0].focus();
         },
         click_confirm: function () {
             const payer = this.$('#mesomb_payer').val();
             const service = this.$('#mesomb_service').val();
             const country = this.$('#mesomb_country').val();
-            if (payer.length > 0) {
+            const amount = parseFloat(this.$('#mesomb_amount').val() || '0');
+            if (payer.length > 0 && amount > 0) {
                 widget.credit_code_action({
                     payer,
                     service,
-                    country: country || this.mesombCountry
+                    country: country || this.mesombCountry,
+                    amount
                 });
                 this.gui.close_popup();
             }
@@ -295,12 +297,12 @@ odoo.define("pos_mesomb.screens", function (require) {
             // } else {
             //     purchase_amount = self.pos.get_order().get_due();
             // }
-            purchase_amount = self.pos.get_order().get_due();
+            // purchase_amount = self.pos.get_order().get_due();
             const customer = self.pos.get_order().attributes?.client;
             // console.log('purchase_amount', purchase_amount);
 
             var transaction = {
-                amount: purchase_amount,
+                amount: parsed_result.amount,
                 payer: parsed_result.payer,
                 service: parsed_result.service,
                 country: parsed_result.country,
@@ -489,6 +491,7 @@ odoo.define("pos_mesomb.screens", function (require) {
                             title: _t('Payment Confirmation'),
                             services: this.mesombCountry ? providers.filter(s => s.countries.includes(this.mesombCountry)) : providers,
                             countries: this.mesombCountry ? null : [{value: 'CM', label: _t('Cameroon')}, {value: 'NE', label: _t('Niger')}],
+                            amount: order.get_due(),
                         });
                     }
                 }

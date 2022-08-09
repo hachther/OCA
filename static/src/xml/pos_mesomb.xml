@@ -55,6 +55,11 @@
                                style="width: 30%; line-height: 44px;">Phone Number</label>
                         <input id="mesomb_payer" name="payer" type='tel' style="width: 70%;" required="required"/>
                     </div>
+                    <div class='client-detail mesomb-form-field'>
+                        <label for="mesomb_amount" class="label"
+                               style="width: 30%; line-height: 44px;">Amount</label>
+                        <input id="mesomb_amount" name="amount" type='number' t-att-value='widget.options.amount' style="width: 70%;" required="required"/>
+                    </div>
                 </form>
                 <div class="footer">
                     <div class="button confirm">
