@@ -24,6 +24,14 @@ odoo.define('pos_mesomb.PaymentFormPopup', function(require) {
             this.inputRef = useRef('payer');
         }
 
+        async confirm() {
+            const payload = await this.getPayload();
+            if (payload.payer?.length > 0 && payload.amount?.length > 0) {
+                this.props.resolve({ confirmed: true, payload });
+                this.trigger('close-popup');
+            }
+        }
+
         mounted() {
             this.inputRef.el.focus();
         }

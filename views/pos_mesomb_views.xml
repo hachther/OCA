@@ -16,30 +16,20 @@
                         <div>
                             <p>
                                 <i>MeSomb Configurations</i>
-                                define what Vantiv account will be used when
-                                processing credit card transactions in the Point Of Sale. Setting up a Vantiv
-                                configuration will enable you to allow payments with various credit cards
-                                (eg. Visa, MasterCard, Discovery, American Express, ...). After setting up this
+                                define what MeSomb account will be used when
+                                processing payment transactions in the Point Of Sale. Setting up a MeSomb
+                                configuration will enable you to allow payments with various mobile payment method
+                                (eg. Mobile Money, Orange Money, Airtel Money, ...). After setting up this
                                 configuration you should associate it with a Point Of Sale payment method.
                             </p>
                             <p>
-                                We currently support the MagTek Dynamag card reader device. It can be connected
-                                directly to the Point Of Sale device or it can be connected to the IoTBox.
-                            </p>
-                            <p>
-                                Using the Vantiv integration in the Point Of Sale is easy: just press the
+                                Using the MeSomb integration in the Point Of Sale is easy: just press the
                                 associated payment method. After that the amount can be adjusted (eg. for cashback)
-                                just like on any other payment line. Whenever the payment line is set up, a card
-                                can be swiped through the card reader device.
+                                just like on any other payment line. Whenever the payment line is set up, the payment
+                                can be validated on the mobile phone.
                             </p>
                             <p>
-                                For quickly handling orders: just swiping a credit card when on the payment screen
-                                (without having pressed anything else) will charge the full amount of the order to
-                                the card.
-                            </p>
-                            <p>
-                                If you don't already have a Vantiv account, contact Vantiv at +1 (800) 846-4472
-                                to create one.
+                                If you don't already have a MeSomb account, please follow <a target="_blank" href="http://my.mesomb.com/en/blog/tutorials/how-to-register-your-service-on-mesomb/">this tutorial</a>.
                             </p>
                         </div>
                         <group col="2">

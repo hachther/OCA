@@ -173,17 +173,17 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
             const self = this;
 
             const validate_pending_line = this._get_validate_pending_line();
-            let purchase_amount = 0;
-
-            if (validate_pending_line) {
-                purchase_amount = validate_pending_line.get_amount();
-            } else {
-                purchase_amount = self.env.pos.get_order().get_due();
-            }
+            // let purchase_amount;
+            //
+            // if (validate_pending_line) {
+            //     purchase_amount = validate_pending_line.get_amount();
+            // } else {
+            //     purchase_amount = self.env.pos.get_order().get_due();
+            // }
             const customer = order.attributes?.client;
 
             var transaction = {
-                amount: purchase_amount,
+                amount: parsed_result.amount,
                 payer: parsed_result.payer,
                 service: parsed_result.service,
                 country: parsed_result.country,
