@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_mesomb.PaymentScreenPaymentLines" t-inherit="point_of_sale.PaymentScreenPaymentLines" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('paymentline')]//t[@t-esc='line.payment_method.name']" position="replace">
+            <t t-if="!line.payment_method.is_cash_count and line.mesomb_validate_pending">
+                <t t-if="line.payment_status == 'failed'">
+                    <span>Payment Failed</span>
+                </t>
+                <t t-else="">
+                    <span>Validation...</span>
+                </t>
+            </t>
+            <t t-else="">
+                <t t-esc="line.payment_method.name" />
+            </t>
+            <!--<t t-jquery="tbody tr.paymentline.selected">
+              this.removeAttr('class');
+              this.attr('t-attf-class', 'paymentline selected #{line.mesomb_validate_pending ? \'o_pos_mesomb_validate_pending\' : \'\'}');
+            </t>
+            <t t-jquery="tbody tr.paymentline[t-att-data-cid*='line.cid']">
+              this.removeAttr('class');
+              this.attr('t-attf-class', 'paymentline #{line.mesomb_validate_pending ? \'o_pos_mesomb_validate_pending\' : \'\'}');
+            </t>
+            <t t-jquery="tbody tr td.col-tendered.edit">
+              this.removeAttr('class');
+              this.attr('t-attf-class', 'col-tendered edit #{line.mesomb_validate_pending ? \'o_pos_mesomb_validate_pending\' : \'\'}');
+            </t>-->
+        </xpath>
+    </t>
+</templates>

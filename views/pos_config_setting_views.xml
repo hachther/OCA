@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.point_of_sale</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="100"/>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='mesomb_payment_terminal_setting']/div[hasclass('o_setting_right_pane')]" position="inside">
+                <div class="mt16">
+                        <button name="%(pos_mesomb.action_configuration_form)d" icon="fa-arrow-right" type="action" string="MeSomb Services" class="btn-link"/>
+                </div>
+                <div>
+                    <a href="https://my.mesomb.com/en/blog/tutorials/how-to-register-your-service-on-mesomb/" target="_blank"><i class="fa fa-fw fa-arrow-right"/>Register on MeSomb</a>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/pos_mesomb/static/src/css/pos_mesomb.css"/>
+
+            <script type="text/javascript" src="/pos_mesomb/static/src/js/payment_mesomb.js"></script>
+            <script type="text/javascript" src="/pos_mesomb/static/src/js/PaymentScreen.js"></script>
+            <script type="text/javascript" src="/pos_mesomb/static/src/js/PaymentScreenPaymentLines.js"></script>
+            <script type="text/javascript" src="/pos_mesomb/static/src/js/models.js"></script>
+            <script type="text/javascript" src="/pos_mesomb/static/src/js/Popups/PaymentFormPopup.js"></script>
+        </xpath>
+    </template>
+</odoo>

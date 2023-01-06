@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="view_account_journal_pos_user_form" model="ir.ui.view">
+    <data>
+        <record id="view_pos_mesomb_configuration_form" model="ir.ui.view">
+            <field name="name">MeSomb Configurations</field>
+            <field name="model">pos_mesomb.configuration</field>
+            <field name="arch" type="xml">
+                <form string="MeSomb Service">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <div>
+                            <p>
+                                <i>MeSomb Configurations</i>
+                                define what Vantiv account will be used when
+                                processing credit card transactions in the Point Of Sale. Setting up a Vantiv
+                                configuration will enable you to allow payments with various credit cards
+                                (eg. Visa, MasterCard, Discovery, American Express, ...). After setting up this
+                                configuration you should associate it with a Point Of Sale payment method.
+                            </p>
+                            <p>
+                                We currently support the MagTek Dynamag card reader device. It can be connected
+                                directly to the Point Of Sale device or it can be connected to the IoTBox.
+                            </p>
+                            <p>
+                                Using the Vantiv integration in the Point Of Sale is easy: just press the
+                                associated payment method. After that the amount can be adjusted (eg. for cashback)
+                                just like on any other payment line. Whenever the payment line is set up, a card
+                                can be swiped through the card reader device.
+                            </p>
+                            <p>
+                                For quickly handling orders: just swiping a credit card when on the payment screen
+                                (without having pressed anything else) will charge the full amount of the order to
+                                the card.
+                            </p>
+                            <p>
+                                If you don't already have a Vantiv account, contact Vantiv at +1 (800) 846-4472
+                                to create one.
+                            </p>
+                        </div>
+                        <group col="2">
+                            <field name="mesomb_app_key"/>
+                            <field name="mesomb_access_key"/>
+                            <field name="mesomb_secret_key"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_pos_mesomb_configuration_tree" model="ir.ui.view">
+            <field name="name">MeSomb Configurations</field>
+            <field name="model">pos_mesomb.configuration</field>
+            <field name="arch" type="xml">
+                <tree string="MeSomb Service">
+                    <field name="name"/>
+                    <field name="mesomb_app_key"/>
+                    <field name="mesomb_access_key"/>
+                    <field name="mesomb_include_fees"/>
+                    <field name="mesomb_currency_conversion"/>
+                    <field name="mesomb_test_mode"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_configuration_form" model="ir.actions.act_window">
+            <field name="name">MeSomb Configurations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos_mesomb.configuration</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Configure your MeSomb Service
+              </p>
+            </field>
+        </record>
+
+        <record id="pos_payment_method_view_form" model="ir.ui.view">
+            <field name="name">Payment Method</field>
+            <field name="model">pos.payment.method</field>
+            <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='use_payment_terminal']" position="after">
+                    <field name="pos_mesomb_config_id" attrs="{'invisible': [('use_payment_terminal', '!=', 'mesomb')], 'required': [('use_payment_terminal', '=', 'mesomb')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_pos_order" model="ir.ui.view">
+          <field name="name">POS Orders</field>
+          <field name="model">pos.order</field>
+          <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+          <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount']" position="before">
+              <field name="mesomb_payer" string="Payer Number"/>
+              <field name="mesomb_service"/>
+              <field name="mesomb_country"/>
+            </xpath>
+          </field>
+        </record>
+
+        <menuitem parent="point_of_sale.menu_point_config_product" action="pos_mesomb.action_configuration_form" id="menu_pos_pos_mesomb_config" groups="base.group_no_one" sequence="36"/>
+    </data>
+    <!--<record id="view_account_journal_pos_user_form" model="ir.ui.view">
         <field name="model">account.journal</field>
         <field name="inherit_id" ref="point_of_sale.view_account_journal_pos_user_form"/>
         <field name="arch" type="xml">
@@ -14,5 +119,5 @@
                 </group>
             </group>
         </field>
-    </record>
+    </record>-->
 </odoo>
