@@ -43,9 +43,16 @@
                             </p>
                         </div>
                         <group col="2">
-                            <field name="mesomb_app_key"/>
-                            <field name="mesomb_access_key"/>
-                            <field name="mesomb_secret_key"/>
+                            <group>
+                                <field name="mesomb_app_key"/>
+                                <field name="mesomb_access_key"/>
+                                <field name="mesomb_secret_key"/>
+                            </group>
+                            <group>
+                                <field name="mesomb_include_fees"/>
+                                <field name="mesomb_currency_conversion"/>
+                                <field name="mesomb_test_mode"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>

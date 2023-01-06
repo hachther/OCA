@@ -48,6 +48,7 @@ class MeSombTransaction(models.Model):
         data['application_key'] = pos_mesomb_config.sudo().mesomb_app_key
         data['access_key'] = pos_mesomb_config.sudo().mesomb_access_key
         data['secret_key'] = pos_mesomb_config.sudo().mesomb_secret_key
+        data['test_mode'] = pos_mesomb_config.sudo().mesomb_test_mode
         data['fees_included'] = pos_mesomb_config.sudo().mesomb_include_fees
         data['currency_conversion'] = pos_mesomb_config.sudo().mesomb_currency_conversion
 
@@ -59,7 +60,7 @@ class MeSombTransaction(models.Model):
         if not data['application_key']:
             return "not setup"
 
-        settings.host = 'http://host.docker.internal:8000'  # if data.pop('test_mode') else 'https://mesomb.hachther.com'
+        settings.host = 'http://host.docker.internal:8000' if data.pop('test_mode') else 'https://mesomb.hachther.com'
         operation = PaymentOperation(data.pop('application_key'), data.pop('access_key'), data.pop('secret_key'))
 
         try:
