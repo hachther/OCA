@@ -5,7 +5,8 @@
     "summary": "Allows to pay with mobile payments (Mobile Money, Orange Money, Airtel Money ...) on the Point of Sale",
     "version": "12.0.1.0.0",
     "category": "Point Of Sale",
-    "author": "Hachther LLC",
+    "website": "https://mesomb.com",
+    "author": "Hachther LLC <contact@hachther.com>",
     "license": "AGPL-3",
     "depends": [
         'web',
