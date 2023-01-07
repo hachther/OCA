@@ -22,7 +22,7 @@ class PosMeSombConfiguration(models.Model):
                                                 help='Rely on MeSomb to automatically convert foreign currencies')
     mesomb_test_mode = fields.Boolean(string='In test mode?', help='Run transactions in the test environment.')
     mesomb_include_fees = fields.Boolean(string='Include Fees?', default=True,
-                                         help='This control if the MeSomb fees is already included in the price shown to users')
+                                         help='This control if the MeSomb fees are already included in the price shown to users')
 
 
 class PosPaymentMethod(models.Model):

@@ -35,7 +35,7 @@ class MeSombTransaction(models.Model):
         if payment_method and payment_method.pos_mesomb_config_id:
             return payment_method.pos_mesomb_config_id
         else:
-            raise UserError(_("No MeSomb configuration associated with the payment method."))
+            raise UserError(_("No MeSomb configuration is associated with the payment method."))
 
     def _setup_request(self, data):
         # todo: in master make the client include the pos.session id and use that

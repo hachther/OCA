@@ -1,0 +1,511 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pos_mesomb
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0-20221226\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-07 08:55+0000\n"
+"PO-Revision-Date: 2023-01-07 10:12+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.1\n"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/xml/pos_mesomb.xml:0
+#, python-format
+msgid "&nbsp;&nbsp;Phone Number:"
+msgstr "&nbsp;&nbsp;Numéro de Téléphone:"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/xml/pos_mesomb.xml:0
+#, python-format
+msgid "&nbsp;&nbsp;Service:"
+msgstr "&nbsp;&nbsp;Service:"
+
+#. module: pos_mesomb
+#: model_terms:ir.ui.view,arch_db:pos_mesomb.view_pos_mesomb_configuration_form
+msgid ""
+"<i>MeSomb Configurations</i>\n"
+"                                define what MeSomb account will be used "
+"when\n"
+"                                processing payment transactions in the Point "
+"Of Sale. Setting up a MeSomb\n"
+"                                configuration will enable you to allow "
+"payments with various mobile payment method\n"
+"                                (eg. Mobile Money, Orange Money, Airtel "
+"Money, ...). After setting up this\n"
+"                                configuration you should associate it with a "
+"Point Of Sale payment method."
+msgstr ""
+"<i>Configurations MeSomb</i>\n"
+"                                 définir quel compte MeSomb sera utilisé "
+"quand\n"
+"                                 traitement des transactions de paiement "
+"dans le point de vente. Mettre en place un MeSomb\n"
+"                                 la configuration vous permettra d’autoriser "
+"les paiements avec différents modes de paiement mobile\n"
+"                                 (ex. Mobile Money, Orange Money, Airtel "
+"Money, …). Après avoir mis en place ce\n"
+"                                 configuration, vous devez l’associer à un "
+"mode de paiement en point de vente."
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__mesomb_access_key
+msgid "Access Key"
+msgstr "Clef d’Accès"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/xml/popups/PaymentFormPopup.xml:0
+#, python-format
+msgid "Amount"
+msgstr "Montant"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__mesomb_app_key
+msgid "Application Key"
+msgstr "Clé d’Application"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid "Cameroon"
+msgstr "Cameroun"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/Popups/PaymentFormPopup.js:0
+#, python-format
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: pos_mesomb
+#: model_terms:ir.actions.act_window,help:pos_mesomb.action_configuration_form
+msgid "Configure your MeSomb Service"
+msgstr "Configurez votre service MeSomb"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/xml/popups/PaymentFormPopup.xml:0
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment__mesomb_country
+#, python-format
+msgid "Country"
+msgstr "Pays"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_payment__mesomb_country
+msgid "Country of the payment"
+msgstr "Pays du paiement"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__create_uid
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_mesomb_transaction__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__create_date
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_mesomb_transaction__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__mesomb_currency_conversion
+msgid "Currency Conversion"
+msgstr "Conversion de Devises"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__display_name
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_mesomb_transaction__display_name
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_order__display_name
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment__display_name
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment_method__display_name
+msgid "Display Name"
+msgstr "Nom"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid "Error"
+msgstr "Erreur"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid "Handling transaction..."
+msgstr "Gestion de la transaction…"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__id
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_mesomb_transaction__id
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_order__id
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment__id
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment_method__id
+msgid "ID"
+msgstr "ID"
+
+#. module: pos_mesomb
+#: model_terms:ir.ui.view,arch_db:pos_mesomb.view_pos_mesomb_configuration_form
+msgid "If you don't already have a MeSomb account, please follow"
+msgstr "Si vous n’avez pas encore de compte MeSomb, veuillez suivre"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__mesomb_test_mode
+msgid "In test mode?"
+msgstr "En mode test ?"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__mesomb_include_fees
+msgid "Include Fees?"
+msgstr "Inclure les frais ?"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_payment__mesomb_invoice_no
+msgid "Invoice number from MeSomb Pay"
+msgstr "Numéro de facture de Paiement MeSomb"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration____last_update
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_mesomb_transaction____last_update
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_order____last_update
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment____last_update
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment_method____last_update
+msgid "Last Modified on"
+msgstr "Dernière Modification le"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__write_uid
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_mesomb_transaction__write_uid
+msgid "Last Updated by"
+msgstr "Dernière Mise à jour par"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__write_date
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_mesomb_transaction__write_date
+msgid "Last Updated on"
+msgstr "Dernière Mise à jour le"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/xml/pos_mesomb.xml:0
+#, python-format
+msgid "MeSomb"
+msgstr "MeSomb"
+
+#. module: pos_mesomb
+#: model:ir.actions.act_window,name:pos_mesomb.action_configuration_form
+#: model:ir.ui.menu,name:pos_mesomb.menu_pos_pos_mesomb_config
+msgid "MeSomb Configurations"
+msgstr "Configurations MeSomb"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment_method__pos_mesomb_config_id
+msgid "MeSomb Credentials"
+msgstr "Identifiants MeSomb"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/xml/pos_mesomb.xml:0
+#, python-format
+msgid "MeSomb Payment"
+msgstr "Paiement MeSomb"
+
+#. module: pos_mesomb
+#: model_terms:ir.ui.view,arch_db:pos_mesomb.view_pos_mesomb_configuration_form
+#: model_terms:ir.ui.view,arch_db:pos_mesomb.view_pos_mesomb_configuration_tree
+msgid "MeSomb Service"
+msgstr "Service MeSomb"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment__mesomb_invoice_no
+msgid "MeSomb invoice number"
+msgstr "Numéro de facture MeSomb"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment__mesomb_record_no
+msgid "MeSomb record number"
+msgstr "Numéro d’enregistrement MeSomb"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment__mesomb_ref_no
+msgid "MeSomb reference number"
+msgstr "Numéro de référence MeSomb"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_mesomb_configuration__name
+msgid "Name of this MeSomb configuration"
+msgstr "Nom de cette configuration MeSomb"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid "Niger"
+msgstr "Niger"
+
+#. module: pos_mesomb
+#: code:addons/pos_mesomb/models/pos_mesomb_transaction.py:0
+#, python-format
+msgid "No MeSomb configuration is associated with the payment method."
+msgstr "Aucune configuration MeSomb n’est associée au moyen de paiement."
+
+#. module: pos_mesomb
+#: code:addons/pos_mesomb/models/pos_mesomb_transaction.py:0
+#, python-format
+msgid "No opened point of sale session for user %s found."
+msgstr ""
+"Aucune session de point de vente ouverte pour l’utilisateur %s n’a été "
+"trouvée."
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid "No response from MeSomb (MeSomb down?)"
+msgstr "Pas de réponse de MeSomb (MeSomb éteint?)"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid "No response from server (connected to network?)"
+msgstr "Aucune réponse du serveur (connecté au réseau?)"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid "Odoo error while processing transaction."
+msgstr "Erreur Odoo lors du traitement de la transaction."
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid "One MeSomb payment is already pending validation"
+msgstr "Un paiement MeSomb est déjà en attente de validation"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/xml/pos_mesomb.xml:0
+#, python-format
+msgid "PAYMENT POWERED BY MESOMB"
+msgstr "PAIEMENT FOURNIT PAR MESOMB"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid "Pay with: "
+msgstr "Payer avec: "
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment__mesomb_payer
+msgid "Payer"
+msgstr "Payeur"
+
+#. module: pos_mesomb
+#: model_terms:ir.ui.view,arch_db:pos_mesomb.view_pos_order
+msgid "Payer Number"
+msgstr "Numéro de Payeur"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/Popups/PaymentFormPopup.js:0
+#, python-format
+msgid "Payment Confirmation"
+msgstr "Confirmation de Paiement"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/xml/PaymentScreenPaymentLines.xml:0
+#, python-format
+msgid "Payment Failed"
+msgstr "Paiement Échoué"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_payment__mesomb_service
+msgid "Payment provider"
+msgstr "Fournisseur de paiement"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_payment__mesomb_record_no
+msgid "Payment record number from MeSomb Pay"
+msgstr "Numéro d’enregistrement de paiement de Paiement MeSomb"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_payment__mesomb_ref_no
+msgid "Payment reference number from MeSomb Pay"
+msgstr "Numéro de référence de paiement de Paiement MeSomb"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid ""
+"Payment refunds are not supported. Instead, select your cash payment method, "
+"click 'Validate' and refund the original charge manually through the MeSomb "
+"backend."
+msgstr ""
+"Les remboursements de paiement ne sont pas pris en charge. Au lieu de cela, "
+"sélectionnez votre méthode de paiement en espèces, cliquez sur ‘Valider’ et "
+"remboursez manuellement la charge initiale via le backend MeSomb."
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/xml/popups/PaymentFormPopup.xml:0
+#, python-format
+msgid "Phone Number"
+msgstr "Numéro de Téléphone"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid "Please setup your MeSomb account."
+msgstr "Veuillez configurer votre compte MeSomb."
+
+#. module: pos_mesomb
+#: model:ir.model,name:pos_mesomb.model_pos_mesomb_configuration
+msgid "Point of Sale MeSomb Configuration"
+msgstr "Point de Vente Configuration MeSomb"
+
+#. module: pos_mesomb
+#: model:ir.model,name:pos_mesomb.model_pos_mesomb_mesomb_transaction
+msgid "Point of Sale MeSomb Transaction"
+msgstr "Point de Vente Transaction MeSomb"
+
+#. module: pos_mesomb
+#: model:ir.model,name:pos_mesomb.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "Point de Vente Commandes"
+
+#. module: pos_mesomb
+#: model:ir.model,name:pos_mesomb.model_pos_payment_method
+msgid "Point of Sale Payment Methods"
+msgstr "Point de Vente Méthodes de Paiement"
+
+#. module: pos_mesomb
+#: model:ir.model,name:pos_mesomb.model_pos_payment
+msgid "Point of Sale Payments"
+msgstr "Point de Vente Paiements"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid "Refunds not supported"
+msgstr "Remboursements non pris en charge"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_mesomb_configuration__mesomb_currency_conversion
+msgid "Rely on MeSomb to automatically convert foreign currencies"
+msgstr ""
+"Faites confiance à MeSomb pour convertir automatiquement les devises "
+"étrangères"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_mesomb_configuration__mesomb_test_mode
+msgid "Run transactions in the test environment."
+msgstr "Exécutez des transactions dans l’environnement de test."
+
+#. module: pos_mesomb
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__mesomb_secret_key
+msgid "Secret Key"
+msgstr "Clef Secrète"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/Popups/PaymentFormPopup.js:0
+#, python-format
+msgid "Send"
+msgstr "Envoyer"
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/xml/popups/PaymentFormPopup.xml:0
+#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment__mesomb_service
+#, python-format
+msgid "Service"
+msgstr "Service"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_mesomb_configuration__mesomb_access_key
+msgid "The access key provided by MeSomb"
+msgstr "La clé d’accès fournie par MeSomb"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_payment_method__pos_mesomb_config_id
+msgid "The configuration of MeSomb used for this journal"
+msgstr "La configuration de MeSomb utilisée pour ce journal"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_mesomb_configuration__mesomb_app_key
+msgid "The key of your MeSomb application"
+msgstr "La clé de votre application MeSomb"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_payment__mesomb_payer
+msgid "The phone number of the payer"
+msgstr "Le numéro de téléphone du payeur"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_mesomb_configuration__mesomb_secret_key
+msgid "The secret key provided by MeSomb"
+msgstr "La clé secrète fournie par MeSomb"
+
+#. module: pos_mesomb
+#: model:ir.model.fields,help:pos_mesomb.field_pos_mesomb_configuration__mesomb_include_fees
+msgid ""
+"This control if the MeSomb fees are already included in the price shown to "
+"users"
+msgstr ""
+"Ça contrôle si les frais MeSomb sont déjà inclus dans le prix affiché aux "
+"utilisateurs"
+
+#. module: pos_mesomb
+#: model_terms:ir.ui.view,arch_db:pos_mesomb.view_pos_mesomb_configuration_form
+msgid ""
+"Using the MeSomb integration in the Point Of Sale is easy: just press the\n"
+"                                associated payment method. After that, the "
+"amount can be adjusted (eg. for cashback)\n"
+"                                just like on any other payment line. "
+"Whenever the payment line is set up, the payment\n"
+"                                can be validated on the mobile phone."
+msgstr ""
+"L’utilisation de l’intégration MeSomb dans le point de vente est simple : il "
+"suffit d’appuyer sur le bouton\n"
+"                                 mode de paiement associé. Après cela, le "
+"montant peut être ajusté (par exemple pour une remise en argent)\n"
+"                                 comme sur n’importe quelle autre ligne de "
+"paiement. Chaque fois que la ligne de paiement est configurée, le paiement\n"
+"                                 peut être validé sur le téléphone mobile."
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/xml/PaymentScreenPaymentLines.xml:0
+#, python-format
+msgid "Validation..."
+msgstr "Validation…"
+
+#. module: pos_mesomb
+#: model_terms:ir.ui.view,arch_db:pos_mesomb.view_pos_mesomb_configuration_form
+msgid "this tutorial"
+msgstr "ce tutoriel"

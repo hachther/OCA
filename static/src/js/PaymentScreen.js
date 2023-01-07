@@ -162,7 +162,7 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
             if (order.get_due(order.selected_paymentline) < 0) {
                 this.showPopup('ErrorPopup', {
                     'title': _t('Refunds not supported'),
-                    'body': _t('Credit card refunds are not supported. Instead select your credit card payment method, click \'Validate\' and refund the original charge manually through the Vantiv backend.'),
+                    'body': _t("Payment refunds are not supported. Instead, select your cash payment method, click 'Validate' and refund the original charge manually through the MeSomb backend."),
                 });
                 return;
             }
