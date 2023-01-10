@@ -8,6 +8,7 @@
     "website": "https://mesomb.com",
     "author": "Hachther LLC <contact@hachther.com>",
     "license": "AGPL-3",
+    "images": ["static/description/banner.png"],
     "depends": [
         'web',
         'point_of_sale',
