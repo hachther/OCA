@@ -201,7 +201,7 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                     country: customer.country_id ? customer.state_id[1] : null,
                     email: customer.email,
                     phone: customer.phone,
-                    address_1: customer.address,
+                    address: customer.address,
                     postcode: customer.zip,
                 }
             }
