@@ -1,9 +1,9 @@
-# Copyright 2021 Tecnativa - David Vidal
+# Copyright 2023 Hachther
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "MeSomb PoS Payment",
     "summary": "Allows to pay with mobile payments (Mobile Money, Orange Money, Airtel Money ...) on the Point of Sale",
-    "version": "15.0.1.0.0",
+    "version": "15.0.1.0.1",
     "category": "Point Of Sale",
     "website": "https://mesomb.com",
     "author": "Hachther LLC <contact@hachther.com>",

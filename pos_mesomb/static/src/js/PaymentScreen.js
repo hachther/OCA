@@ -250,9 +250,10 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                     }
 
                     const {status, data: response, message} = self.env.pos.decodeMeSombResponse(data);
-                    response.payment_method_id = parsed_result.payment_method_id;
+                    const order = self.env.pos.get_order();
 
                     if (status === 'SUCCESS') {
+                        response.payment_method_id = parsed_result.payment_method_id;
                         // AP* indicates a duplicate request, so don't add anything for those
                         if (self._does_credit_payment_line_exist(response.trxamount, transaction.payer,
                             transaction.service, transaction.country)) {
@@ -262,7 +263,6 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                             });
                         } else {
                             // If the payment is approved, add a payment line
-                            var order = self.env.pos.get_order();
 
                             if (validate_pending_line) {
                                 order.select_paymentline(validate_pending_line);
@@ -293,7 +293,7 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                             self.render();
 
                             def.resolve({
-                                message: response.message,
+                                message,
                                 auto_close: true,
                             });
                         }
@@ -305,8 +305,9 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                         //     self.retry_mesomb_transaction(def, response, retry_nr, true, self.credit_code_transaction, [parsed_result, def, retry_nr + 1]);
                         // } else { // not recoverable
                         // }
+                        order.selected_paymentline.set_payment_status('failed');
                         def.resolve({
-                            message: response.message,
+                            message,
                             auto_close: false
                         });
                     }
