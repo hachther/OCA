@@ -9,6 +9,7 @@
             <script type="text/javascript" src="/pos_mesomb/static/src/js/PaymentScreenPaymentLines.js"></script>
             <script type="text/javascript" src="/pos_mesomb/static/src/js/models.js"></script>
             <script type="text/javascript" src="/pos_mesomb/static/src/js/Popups/PaymentFormPopup.js"></script>
+            <script type="text/javascript" src="/pos_mesomb/static/src/js/Popups/MeSombPaymentTransactionPopup.js"></script>
         </xpath>
     </template>
 </odoo>

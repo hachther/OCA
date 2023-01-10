@@ -1,16 +1,19 @@
-odoo.define('pos_mesomb.PaymentTransactionPopup', function(require) {
+odoo.define('pos_mesomb.MeSombPaymentTransactionPopup', function (require) {
     'use strict';
 
     const {_t} = require('web.core');
 
-    const { useState } = owl.hooks;
+    const {useState} = owl.hooks;
     const AbstractAwaitablePopup = require('point_of_sale.AbstractAwaitablePopup');
     const Registries = require('point_of_sale.Registries');
 
-    class PaymentTransactionPopup extends AbstractAwaitablePopup {
+    class MeSombPaymentTransactionPopup extends AbstractAwaitablePopup {
         constructor() {
             super(...arguments);
-            this.state = useState({ message: '', confirmButtonIsShown: false });
+            this.state = useState({message: '', confirmButtonIsShown: false});
+        }
+
+        mounted() {
             this.props.transaction.then(data => {
                 if (data.auto_close) {
                     setTimeout(() => {
@@ -25,15 +28,16 @@ odoo.define('pos_mesomb.PaymentTransactionPopup', function(require) {
             })
         }
     }
-    PaymentTransactionPopup.template = 'MeSombPaymentTransactionPopup';
-    PaymentTransactionPopup.defaultProps = {
-        confirmText: _('Ok'),
-        cancelText: _('Cancel'),
-        title: _('Online Payment'),
+
+    MeSombPaymentTransactionPopup.template = 'MeSombPaymentTransactionPopup';
+    MeSombPaymentTransactionPopup.defaultProps = {
+        confirmText: _t('Ok'),
+        cancelText: _t('Cancel'),
+        title: _t('Online Payment'),
         body: '',
     };
 
-    Registries.Component.add(PaymentTransactionPopup);
+    Registries.Component.add(MeSombPaymentTransactionPopup);
 
-    return PaymentTransactionPopup;
+    return MeSombPaymentTransactionPopup;
 });

@@ -213,7 +213,7 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
             // the transaction deferred is used to update transaction status
             // if we have a previous deferred it indicates that this is a retry
             if (!old_deferred) {
-                this.showPopup('PaymentTransactionPopup', {
+                self.showPopup('MeSombPaymentTransactionPopup', {
                     transaction: def
                 });
                 def.notify({
@@ -250,9 +250,9 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                     }
 
                     const {status, data: response, message} = self.env.pos.decodeMeSombResponse(data);
-                    response.payment_method_id = parsed_result.payment_method_id;
 
                     if (status === 'SUCCESS') {
+                        response.payment_method_id = parsed_result.payment_method_id;
                         // AP* indicates a duplicate request, so don't add anything for those
                         if (self._does_credit_payment_line_exist(response.trxamount, transaction.payer,
                             transaction.service, transaction.country)) {
@@ -306,12 +306,13 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                         // } else { // not recoverable
                         // }
                         def.resolve({
-                            message: response.message,
+                            message,
                             auto_close: false
                         });
                     }
                 })
                 .catch(function (e) {
+                    console.dir(e);
                     self.retry_mesomb_transaction(
                         def,
                         null,
