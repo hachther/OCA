@@ -250,6 +250,7 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                     }
 
                     const {status, data: response, message} = self.env.pos.decodeMeSombResponse(data);
+                    var order = self.env.pos.get_order();
 
                     if (status === 'SUCCESS') {
                         response.payment_method_id = parsed_result.payment_method_id;
@@ -262,7 +263,6 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                             });
                         } else {
                             // If the payment is approved, add a payment line
-                            var order = self.env.pos.get_order();
 
                             if (validate_pending_line) {
                                 order.select_paymentline(validate_pending_line);
@@ -305,6 +305,7 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                         //     self.retry_mesomb_transaction(def, response, retry_nr, true, self.credit_code_transaction, [parsed_result, def, retry_nr + 1]);
                         // } else { // not recoverable
                         // }
+                        order.selected_paymentline.set_payment_status('failed');
                         def.resolve({
                             message,
                             auto_close: false
