@@ -181,6 +181,7 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
             //     purchase_amount = self.env.pos.get_order().get_due();
             // }
             const customer = order.attributes?.client;
+            console.dir(order);
 
             var transaction = {
                 amount: parsed_result.amount,
@@ -274,14 +275,14 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
 
                             order.selected_paymentline.paid = true;
                             order.selected_paymentline.mesomb_validate_pending = false;
-                            order.selected_paymentline.mesomb_amount = response.amount;
+                            order.selected_paymentline.mesomb_amount = response.trxamount;
                             order.selected_paymentline.set_amount(response.trxamount);
                             order.selected_paymentline.mesomb_payer = response.b_party;
                             order.selected_paymentline.mesomb_service = response.service;
                             order.selected_paymentline.mesomb_service_name = providers.find(p => p.value === response.service)?.label;
                             order.selected_paymentline.mesomb_country = response.country;
-                            order.selected_paymentline.mesomb_ref_no = response.reference;
-                            // order.selected_paymentline.mercury_record_no = response.record_no;
+                            order.selected_paymentline.mesomb_ref_no = response.name;
+                            order.selected_paymentline.mesomb_record_no = response.pk;
                             // order.selected_paymentline.mercury_invoice_no = response.invoice_no;
                             // order.selected_paymentline.mercury_auth_code = response.auth_code;
                             order.selected_paymentline.mesomb_data = response; // used to reverse transactions
