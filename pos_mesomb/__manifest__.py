@@ -26,6 +26,5 @@
     ],
     'installable': True,
     'auto_install': False,
-    'license': 'LGPL-3',
-    'pre_init_hook': '_pre_init_mesomb'
+    'license': 'LGPL-3'
 }
