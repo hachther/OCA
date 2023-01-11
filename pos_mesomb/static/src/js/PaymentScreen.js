@@ -181,7 +181,6 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
             //     purchase_amount = self.env.pos.get_order().get_due();
             // }
             const customer = order.attributes?.client;
-            console.dir(order);
 
             var transaction = {
                 amount: parsed_result.amount,
