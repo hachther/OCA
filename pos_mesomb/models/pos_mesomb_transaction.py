@@ -105,27 +105,6 @@ class PaymentOperation:
 
         return Signature.sign_request('payment', method, url, date, nonce, credentials, headers, body)
 
-    def process_client_exception(self, response):
-        status_code = response.status_code
-        detail = response.text
-        code = None
-
-        if detail.startswith('{'):
-            data = json.loads(detail)
-            detail = data['detail']
-            code = data['code']
-
-        if status_code == 404:
-            raise ServiceNotFoundException(detail, code)
-
-        if status_code in [403, 401]:
-            raise PermissionDeniedException(detail, code)
-
-        if status_code == 400:
-            raise InvalidClientRequestException(detail, code)
-
-        raise ServerException(detail, code)
-
     def make_collect(self, amount, service, payer, date, nonce, country='CM', currency='XAF', fees_included=True,
                      mode='synchronous', conversion=False, location=None, customer=None, products=None, extra=None):
         """
@@ -224,6 +203,7 @@ class MeSombTransaction(models.Model):
         data['test_mode'] = pos_mesomb_config.sudo().mesomb_test_mode
         data['fees_included'] = pos_mesomb_config.sudo().mesomb_include_fees
         data['currency_conversion'] = pos_mesomb_config.sudo().mesomb_currency_conversion
+        data['memo'] = "Odoo " + service.common.exp_version()['server_version']
 
     def _do_request(self, template, data):
         if not data['application_key']:
@@ -239,7 +219,9 @@ class MeSombTransaction(models.Model):
                                        fees_included=data.pop('fees_included'),
                                        conversion=data.pop('currency_conversion'), customer=data.pop('customer', None),
                                        extra={'products': data.pop('products', None),
-                                              'reference': data.pop('reference', None)})
+                                              'reference': data.pop('reference', None),
+                                              'source': data.pop('memo', None)})
+            r.raise_for_status()
             response = r.text
         except Union[ConnectTimeout, NewConnectionError] as e:
             return 'timeout'
@@ -288,10 +270,10 @@ class MeSombTransaction(models.Model):
         response = self._do_request('pos_mesomb.mesomb_return', data)
         return response
 
-    # One time (the ones we use) Mesomb tokens are required to be
+    # One time (the ones we use) Vantiv tokens are required to be
     # deleted after 6 months
-    @api.model
-    def cleanup_old_tokens(self):
+    @api.autovacuum
+    def _gc_old_tokens(self):
         expired_creation_date = (date.today() - timedelta(days=6 * 30)).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
 
         for order in self.env['pos.order'].search([('create_date', '<', expired_creation_date)]):

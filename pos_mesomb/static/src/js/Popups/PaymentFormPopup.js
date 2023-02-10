@@ -1,9 +1,9 @@
 odoo.define('pos_mesomb.PaymentFormPopup', function(require) {
     'use strict';
 
-    const {_t} = require('web.core');
+    const { _lt } = require('@web/core/l10n/translation');
 
-    const { useState, useRef } = owl.hooks;
+    const { useState, useRef, onMounted } = owl;
     const AbstractAwaitablePopup = require('point_of_sale.AbstractAwaitablePopup');
     const Registries = require('point_of_sale.Registries');
     const providers = [
@@ -14,25 +14,26 @@ odoo.define('pos_mesomb.PaymentFormPopup', function(require) {
 
     // formerly ConfirmPopupWidget
     class PaymentFormPopup extends AbstractAwaitablePopup {
-        constructor() {
-            super(...arguments);
+        setup() {
+            super.setup();
             this.state = useState({
                 payer: this.props.payer,
                 amount: this.props.amount,
                 service: this.props.service,
             });
             this.inputRef = useRef('payer');
+            onMounted(this.onMounted);
         }
 
         async confirm() {
             const payload = this.getPayload();
             if (payload.payer?.length > 0 && parseInt(payload.amount) > 0) {
                 this.props.resolve({ confirmed: true, payload });
-                this.trigger('close-popup');
+                super.confirm();
             }
         }
 
-        mounted() {
+        onMounted() {
             this.inputRef.el.focus();
         }
 
@@ -47,9 +48,9 @@ odoo.define('pos_mesomb.PaymentFormPopup', function(require) {
     }
     PaymentFormPopup.template = 'PaymentFormPopup';
     PaymentFormPopup.defaultProps = {
-        confirmText: _t('Send'),
-        cancelText: _t('Cancel'),
-        title: _t('Payment Confirmation'),
+        confirmText: _lt('Send'),
+        cancelText: _lt('Cancel'),
+        title: _lt('Payment Confirmation'),
         services: providers,
     };
 

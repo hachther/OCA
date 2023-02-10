@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
+
     <t t-name="PaymentFormPopup" owl="1">
-        <div role="dialog" class="modal-dialog">
             <div class="popup popup-textinput popup-mobile-payment">
-                <header class="title"><t t-esc="props.title" /></header>
-                <form class="body" id="mesomb-form">
+                <header class="title">
+                    <t t-esc="props.title"/>
+                </header>
+                <div class="body">
                     <t t-if="props.countries">
                         <div class='client-detail mesomb-form-field'>
                             <label for="mesomb_country" class="label"
                                    style="width: 30%; line-height: 44px;">Country</label>
                             <select id="mesomb_country" class='popup-input' name='country' style="width: 70%;"
                                     required="required" t-model="state.country">
-                                <t t-foreach="props.countries || []" t-as="country">
+                                <t t-foreach="props.countries" t-as="country" t-key="country.value">
                                     <option t-att-value='country.value'>
                                         <t t-esc='country.label'/>
                                     </option>
@@ -23,7 +25,7 @@
                         <label for="mesomb_service" class="label" style="width: 30%; line-height: 44px;">Service</label>
                         <select id="mesomb_service" class='popup-input' name='service' style="width: 70%;"
                                 required="required" t-model="state.service">
-                            <t t-foreach="props.services || []" t-as="service">
+                            <t t-foreach="props.services" t-as="service" t-key="service.value">
                                 <option t-att-value='service.value'>
                                     <t t-esc='service.label'/>
                                 </option>
@@ -42,16 +44,16 @@
                         <input id="mesomb_amount" name="amount" type='number' t-model="state.amount"
                                style="width: 70%;" required="required"/>
                     </div>
-                </form>
+                </div>
                 <div class="footer">
-                    <div class="button confirm" t-on-click="confirm">
-                        <t t-esc="props.confirmText" />
+                    <div class="button confirm highlight" t-on-click="confirm">
+                        <t t-esc="props.confirmText"/>
                     </div>
                     <div class="button cancel" t-on-click="cancel">
-                        <t t-esc="props.cancelText" />
+                        <t t-esc="props.cancelText"/>
                     </div>
                 </div>
             </div>
-        </div>
     </t>
+
 </templates>

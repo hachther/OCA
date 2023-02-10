@@ -1,11 +1,10 @@
 odoo.define('pos_mesomb.PaymentScreen', function(require) {
     "use strict";
 
-    const {_t} = require('web.core');
+    const { _t } = require('web.core');
     const PaymentScreen = require('point_of_sale.PaymentScreen');
-    const NumberBuffer = require('point_of_sale.NumberBuffer');
     const Registries = require('point_of_sale.Registries');
-    const { onMounted } = owl.hooks;
+    const NumberBuffer = require('point_of_sale.NumberBuffer');
 
     const providers = [
         {value: 'MTN', label: 'Mobile Money', countries: ['CM']},
@@ -20,8 +19,8 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
     }
 
     const PosMeSombPaymentScreen = (PaymentScreen) => class extends PaymentScreen {
-        constructor() {
-            super(...arguments);
+        setup() {
+            super.setup();
             // How long we wait for the odoo server to deliver the response of
             // a Mercury transaction
             this.server_timeout_in_ms = 95000;
@@ -77,42 +76,42 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
         }
 
         async addNewPaymentLine({ detail: paymentMethod }) {
-            if (paymentMethod.use_payment_terminal === 'mesomb') {
-                let lines = this.paymentLines
-                let mesomb_validate_pending = lines.findIndex(l => l.payment_method.use_payment_terminal === 'mesomb' && l.mesomb_validate_pending) >= 0;
-                // console.dir(lines);
-                if (mesomb_validate_pending) {
-                    this.showPopup('ErrorPopup', {
-                        title: _t('Error'),
-                        body: _t('One MeSomb payment is already pending validation'),
-                    })
+            if (paymentMethod.use_payment_terminal !== 'mesomb') {
+                return super.addNewPaymentLine(...arguments);
+            }
+            const order = this.env.pos.get_order();
+            let mesomb_validate_pending = this.paymentLines.findIndex(l => l.payment_method.use_payment_terminal === 'mesomb' && l.mesomb_validate_pending) >= 0;
+            // console.dir(lines);
+            if (mesomb_validate_pending) {
+                this.showPopup('ErrorPopup', {
+                    title: _t('Error'),
+                    body: _t('One MeSomb payment is already pending validation'),
+                });
+                return
+            }
+            const res = super.addNewPaymentLine(...arguments);
+            if (order.get_due(order.selected_paymentline) > 0) {
+                order.selected_paymentline.mesomb_validate_pending = true;
+            //     // this.render_paymentlines();
+            //     // order.trigger('change', order); // needed so that export_to_JSON gets triggered
+            //
+                const services = this.mesombCountry ? providers.filter(s => s.countries.includes(this.mesombCountry)) : providers;
+                const ret = await this.showPopup('PaymentFormPopup', {
+                    services,
+                    service: services[0]?.value,
+                    countries: this.mesombCountry ? null : [{value: 'CM', label: _t('Cameroon')}, {value: 'NE', label: _t('Niger')}],
+                    amount: order.get_due(),
+                    payer: order.attributes?.client?.phone,
+                });
+                if (ret.confirmed) {
+                    this.credit_code_action({
+                        ...ret.payload,
+                        country: ret.payload.country || this.mesombCountry,
+                    });
                 } else {
-                    super.addNewPaymentLine({detail: paymentMethod});
-                    if (this.currentOrder.get_due(this.currentOrder.selected_paymentline) > 0) {
-                        this.currentOrder.selected_paymentline.mesomb_validate_pending = true;
-                        // this.render_paymentlines();
-                        this.currentOrder.trigger('change', this.currentOrder); // needed so that export_to_JSON gets triggered
-
-                        const services = this.mesombCountry ? providers.filter(s => s.countries.includes(this.mesombCountry)) : providers;
-                        const ret = await this.showPopup('PaymentFormPopup', {
-                            services,
-                            service: services[0]?.value,
-                            countries: this.mesombCountry ? null : [{value: 'CM', label: _t('Cameroon')}, {value: 'NE', label: _t('Niger')}],
-                            amount: this.currentOrder.get_due(),
-                            payer: this.currentOrder.attributes?.client?.phone,
-                        });
-                        if (ret.confirmed) {
-                            this.credit_code_action({
-                                ...ret.payload,
-                                country: ret.payload.country || this.mesombCountry,
-                            });
-                        }
-                    }
-                    return ;
+                    order.remove_paymentline(order.selected_paymentline)
                 }
             }
-
-            return super.addNewPaymentLine({detail: paymentMethod});
         }
 
         _get_validate_pending_line () {
@@ -131,7 +130,12 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
         credit_code_action(parsed_result) {
             var online_payment_methods = this.env.pos.getOnlinePaymentMethods();
 
-            if (online_payment_methods.length === 1) {
+            if (online_payment_methods.length === 0) {
+                this.showPopup('ErrorPopup', {
+                    'title': _t('Missing Configuration'),
+                    'body': _t("MeSomb service configuration is missing please check your configuration in settings and try again."),
+                });
+            } else if (online_payment_methods.length === 1) {
                 parsed_result.payment_method_id = online_payment_methods[0].item;
                 this.credit_code_transaction(parsed_result);
             } else {
@@ -289,7 +293,7 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                             order.selected_paymentline.set_payment_status('done');
 
                             NumberBuffer.reset();
-                            order.trigger('change', order); // needed so that export_to_JSON gets triggered
+                            // order.trigger('change', order); // needed so that export_to_JSON gets triggered
                             self.render();
 
                             def.resolve({
@@ -313,14 +317,15 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                     }
                 })
                 .catch(function (e) {
-                    self.retry_mesomb_transaction(
-                        def,
-                        null,
-                        retry_nr,
-                        false,
-                        self.credit_code_transaction,
-                        [parsed_result, def, retry_nr + 1]
-                    );
+                    console.dir(e);
+                    // self.retry_mesomb_transaction(
+                    //     def,
+                    //     null,
+                    //     retry_nr,
+                    //     false,
+                    //     self.credit_code_transaction,
+                    //     [parsed_result, def, retry_nr + 1]
+                    // );
                 });
         }
 

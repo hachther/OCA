@@ -1,2 +1,3 @@
-from . import pos_payment_method
+from . import pos_mesomb
 from . import pos_mesomb_transaction
+from . import pos_session
