@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0-20221226\n"
+"Project-Id-Version: Odoo Server 15.0-20230109\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-07 08:55+0000\n"
-"PO-Revision-Date: 2023-01-07 08:55+0000\n"
+"POT-Creation-Date: 2023-02-10 17:56+0000\n"
+"PO-Revision-Date: 2023-02-10 17:56+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr ""
 
 #. module: pos_mesomb
 #. openerp-web
-#: code:addons/pos_mesomb/static/src/xml/popups/PaymentFormPopup.xml:0
+#: code:addons/pos_mesomb/static/src/xml/PaymentFormPopup.xml:0
 #, python-format
 msgid "Amount"
 msgstr ""
@@ -66,7 +66,7 @@ msgstr ""
 
 #. module: pos_mesomb
 #. openerp-web
-#: code:addons/pos_mesomb/static/src/js/Popups/PaymentFormPopup.js:0
+#: code:addons/pos_mesomb/static/src/js/PaymentFormPopup.js:0
 #, python-format
 msgid "Cancel"
 msgstr ""
@@ -78,7 +78,7 @@ msgstr ""
 
 #. module: pos_mesomb
 #. openerp-web
-#: code:addons/pos_mesomb/static/src/xml/popups/PaymentFormPopup.xml:0
+#: code:addons/pos_mesomb/static/src/xml/PaymentFormPopup.xml:0
 #: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment__mesomb_country
 #, python-format
 msgid "Country"
@@ -109,9 +109,6 @@ msgstr ""
 #. module: pos_mesomb
 #: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__display_name
 #: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_mesomb_transaction__display_name
-#: model:ir.model.fields,field_description:pos_mesomb.field_pos_order__display_name
-#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment__display_name
-#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment_method__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -132,9 +129,6 @@ msgstr ""
 #. module: pos_mesomb
 #: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration__id
 #: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_mesomb_transaction__id
-#: model:ir.model.fields,field_description:pos_mesomb.field_pos_order__id
-#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment__id
-#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment_method__id
 msgid "ID"
 msgstr ""
 
@@ -161,9 +155,6 @@ msgstr ""
 #. module: pos_mesomb
 #: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_configuration____last_update
 #: model:ir.model.fields,field_description:pos_mesomb.field_pos_mesomb_mesomb_transaction____last_update
-#: model:ir.model.fields,field_description:pos_mesomb.field_pos_order____last_update
-#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment____last_update
-#: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment_method____last_update
 msgid "Last Modified on"
 msgstr ""
 
@@ -223,6 +214,22 @@ msgstr ""
 #. module: pos_mesomb
 #: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment__mesomb_ref_no
 msgid "MeSomb reference number"
+msgstr ""
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid ""
+"MeSomb service configuration is missing please check your configuration in "
+"settings and try again."
+msgstr ""
+
+#. module: pos_mesomb
+#. openerp-web
+#: code:addons/pos_mesomb/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid "Missing Configuration"
 msgstr ""
 
 #. module: pos_mesomb
@@ -308,7 +315,7 @@ msgstr ""
 
 #. module: pos_mesomb
 #. openerp-web
-#: code:addons/pos_mesomb/static/src/js/Popups/PaymentFormPopup.js:0
+#: code:addons/pos_mesomb/static/src/js/PaymentFormPopup.js:0
 #, python-format
 msgid "Payment Confirmation"
 msgstr ""
@@ -347,7 +354,7 @@ msgstr ""
 
 #. module: pos_mesomb
 #. openerp-web
-#: code:addons/pos_mesomb/static/src/xml/popups/PaymentFormPopup.xml:0
+#: code:addons/pos_mesomb/static/src/xml/PaymentFormPopup.xml:0
 #, python-format
 msgid "Phone Number"
 msgstr ""
@@ -408,14 +415,14 @@ msgstr ""
 
 #. module: pos_mesomb
 #. openerp-web
-#: code:addons/pos_mesomb/static/src/js/Popups/PaymentFormPopup.js:0
+#: code:addons/pos_mesomb/static/src/js/PaymentFormPopup.js:0
 #, python-format
 msgid "Send"
 msgstr ""
 
 #. module: pos_mesomb
 #. openerp-web
-#: code:addons/pos_mesomb/static/src/xml/popups/PaymentFormPopup.xml:0
+#: code:addons/pos_mesomb/static/src/xml/PaymentFormPopup.xml:0
 #: model:ir.model.fields,field_description:pos_mesomb.field_pos_payment__mesomb_service
 #, python-format
 msgid "Service"
