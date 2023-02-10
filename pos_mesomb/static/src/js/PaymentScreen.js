@@ -106,6 +106,8 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                                 ...ret.payload,
                                 country: ret.payload.country || this.mesombCountry,
                             });
+                        } else {
+                            this.currentOrder.remove_paymentline(this.currentOrder.selected_paymentline)
                         }
                     }
                     return ;
@@ -131,7 +133,12 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
         credit_code_action(parsed_result) {
             var online_payment_methods = this.env.pos.getOnlinePaymentMethods();
 
-            if (online_payment_methods.length === 1) {
+            if (online_payment_methods.length === 0) {
+                 this.showPopup('ErrorPopup', {
+                     'title': _t('Missing Configuration'),
+                     'body': _t("MeSomb service configuration is missing please check your configuration in settings and try again."),
+                 });
+             } else if (online_payment_methods.length === 1) {
                 parsed_result.payment_method_id = online_payment_methods[0].item;
                 this.credit_code_transaction(parsed_result);
             } else {

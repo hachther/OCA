@@ -22,6 +22,7 @@ from requests import ConnectTimeout
 from urllib3.exceptions import NewConnectionError
 
 _logger = logging.getLogger(__name__)
+api_version = 'v1.1'
 
 
 class Signature:
@@ -103,27 +104,6 @@ class PaymentOperation:
         credentials = {'access_key': self.access_key, 'secret_key': self.secret_key}
 
         return Signature.sign_request('payment', method, url, date, nonce, credentials, headers, body)
-
-    def process_client_exception(self, response):
-        status_code = response.status_code
-        detail = response.text
-        code = None
-
-        if detail.startswith('{'):
-            data = json.loads(detail)
-            detail = data['detail']
-            code = data['code']
-
-        if status_code == 404:
-            raise ServiceNotFoundException(detail, code)
-
-        if status_code in [403, 401]:
-            raise PermissionDeniedException(detail, code)
-
-        if status_code == 400:
-            raise InvalidClientRequestException(detail, code)
-
-        raise ServerException(detail, code)
 
     def make_collect(self, amount, service, payer, date, nonce, country='CM', currency='XAF', fees_included=True,
                      mode='synchronous', conversion=False, location=None, customer=None, products=None, extra=None):
@@ -222,6 +202,7 @@ class MeSombTransaction(models.Model):
         data['test_mode'] = pos_mesomb_config.sudo().mesomb_test_mode
         data['fees_included'] = pos_mesomb_config.sudo().mesomb_include_fees
         data['currency_conversion'] = pos_mesomb_config.sudo().mesomb_currency_conversion
+        data['memo'] = "Odoo " + service.common.exp_version()['server_version']
 
     def _do_request(self, template, data):
         if not data['application_key']:
@@ -238,6 +219,7 @@ class MeSombTransaction(models.Model):
                                        conversion=data.pop('currency_conversion'), customer=data.pop('customer', None),
                                        products=data.pop('products', None),
                                        extra={'reference': data.pop('reference', None)})
+            r.raise_for_status()
             response = r.text
         except Union[ConnectTimeout, NewConnectionError] as e:
             return 'timeout'

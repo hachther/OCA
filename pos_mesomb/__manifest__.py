@@ -3,7 +3,7 @@
 {
     "name": "MeSomb PoS Payment",
     "summary": "Allows to pay with mobile payments (Mobile Money, Orange Money, Airtel Money ...) on the Point of Sale",
-    "version": "14.0.1.0.1",
+    "version": "14.0.1.0.2",
     "category": "Point Of Sale",
     "website": "https://mesomb.com",
     "author": "Hachther LLC <contact@hachther.com>",

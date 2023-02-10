@@ -11,7 +11,7 @@
                                    style="width: 30%; line-height: 44px;">Country</label>
                             <select id="mesomb_country" class='popup-input' name='country' style="width: 70%;"
                                     required="required" t-model="state.country">
-                                <t t-foreach="props.countries || []" t-as="country">
+                                <t t-foreach="props.countries || []" t-as="country" t-key="service.value">
                                     <option t-att-value='country.value'>
                                         <t t-esc='country.label'/>
                                     </option>
@@ -23,7 +23,7 @@
                         <label for="mesomb_service" class="label" style="width: 30%; line-height: 44px;">Service</label>
                         <select id="mesomb_service" class='popup-input' name='service' style="width: 70%;"
                                 required="required" t-model="state.service">
-                            <t t-foreach="props.services || []" t-as="service">
+                            <t t-foreach="props.services || []" t-as="service" t-key="service.value">
                                 <option t-att-value='service.value'>
                                     <t t-esc='service.label'/>
                                 </option>
