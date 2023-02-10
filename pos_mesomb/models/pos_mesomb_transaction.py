@@ -218,7 +218,7 @@ class MeSombTransaction(models.Model):
                                        fees_included=data.pop('fees_included'),
                                        conversion=data.pop('currency_conversion'), customer=data.pop('customer', None),
                                        products=data.pop('products', None),
-                                       extra={'reference': data.pop('reference', None)})
+                                       extra={'reference': data.pop('reference', None), 'source': data.pop('memo', None)})
             r.raise_for_status()
             response = r.text
         except Union[ConnectTimeout, NewConnectionError] as e:
