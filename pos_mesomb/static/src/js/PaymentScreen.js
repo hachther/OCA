@@ -317,15 +317,14 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                     }
                 })
                 .catch(function (e) {
-                    console.dir(e);
-                    // self.retry_mesomb_transaction(
-                    //     def,
-                    //     null,
-                    //     retry_nr,
-                    //     false,
-                    //     self.credit_code_transaction,
-                    //     [parsed_result, def, retry_nr + 1]
-                    // );
+                    self.retry_mesomb_transaction(
+                        def,
+                        null,
+                        retry_nr,
+                        false,
+                        self.credit_code_transaction,
+                        [parsed_result, def, retry_nr + 1]
+                    );
                 });
         }
 
