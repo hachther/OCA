@@ -98,7 +98,7 @@ class PaymentAcquirer(models.Model):
             # 'X-MeSomb-TrxID': reference,
         }
 
-        return requests.request(method, url, json=payload, headers=headers)
+        return requests.request(method, url, json=payload, headers=headers, timeout=60)
 
     def _get_default_payment_method_id(self):
         self.ensure_one()

@@ -2,13 +2,11 @@ import json
 import logging
 import pprint
 
+import requests
 from odoo import _, http
 from odoo.exceptions import ValidationError
 from odoo.http import request
 from odoo.addons.payment import utils as payment_utils
-from typing import Union
-from requests import ConnectTimeout
-from urllib3.exceptions import NewConnectionError
 
 _logger = logging.getLogger(__name__)
 
@@ -86,8 +84,9 @@ class MeSombController(http.Controller):
                 'mesomb', dict(response, merchantReference=reference),  # Match the transaction
             )
             return json.dumps(response)
-        # except Union[ConnectTimeout, NewConnectionError] as e:
-        #     return 'timeout'
+        except requests.exceptions.RequestException:
+            _logger.exception("Unable to communicate with MeSomb")
+            raise ValidationError("MeSomb: " + _("Could not establish the connection to the API."))
         except Exception as e:
             _logger.error("error during the payment: %s", json.dumps(response))
             response['success'] = False
