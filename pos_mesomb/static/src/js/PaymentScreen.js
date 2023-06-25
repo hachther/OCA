@@ -106,6 +106,8 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                                 ...ret.payload,
                                 country: ret.payload.country || this.mesombCountry,
                             });
+                        } else {
+                            this.currentOrder.remove_paymentline(this.currentOrder.selected_paymentline)
                         }
                     }
                     return ;
@@ -131,7 +133,12 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
         credit_code_action(parsed_result) {
             var online_payment_methods = this.env.pos.getOnlinePaymentMethods();
 
-            if (online_payment_methods.length === 1) {
+            if (online_payment_methods.length === 0) {
+                this.showPopup('ErrorPopup', {
+                    'title': _t('Missing Configuration'),
+                    'body': _t("MeSomb service configuration is missing please check your configuration in settings and try again."),
+                });
+            } else if (online_payment_methods.length === 1) {
                 parsed_result.payment_method_id = online_payment_methods[0].item;
                 this.credit_code_transaction(parsed_result);
             } else {
@@ -201,7 +208,7 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                     country: customer.country_id ? customer.state_id[1] : null,
                     email: customer.email,
                     phone: customer.phone,
-                    address_1: customer.address,
+                    address: customer.address,
                     postcode: customer.zip,
                 }
             }
@@ -250,9 +257,10 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                     }
 
                     const {status, data: response, message} = self.env.pos.decodeMeSombResponse(data);
-                    response.payment_method_id = parsed_result.payment_method_id;
+                    const order = self.env.pos.get_order();
 
                     if (status === 'SUCCESS') {
+                        response.payment_method_id = parsed_result.payment_method_id;
                         // AP* indicates a duplicate request, so don't add anything for those
                         if (self._does_credit_payment_line_exist(response.trxamount, transaction.payer,
                             transaction.service, transaction.country)) {
@@ -262,7 +270,6 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                             });
                         } else {
                             // If the payment is approved, add a payment line
-                            var order = self.env.pos.get_order();
 
                             if (validate_pending_line) {
                                 order.select_paymentline(validate_pending_line);
@@ -274,14 +281,14 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
 
                             order.selected_paymentline.paid = true;
                             order.selected_paymentline.mesomb_validate_pending = false;
-                            order.selected_paymentline.mesomb_amount = response.amount;
+                            order.selected_paymentline.mesomb_amount = response.trxamount;
                             order.selected_paymentline.set_amount(response.trxamount);
                             order.selected_paymentline.mesomb_payer = response.b_party;
                             order.selected_paymentline.mesomb_service = response.service;
                             order.selected_paymentline.mesomb_service_name = providers.find(p => p.value === response.service)?.label;
                             order.selected_paymentline.mesomb_country = response.country;
-                            order.selected_paymentline.mesomb_ref_no = response.reference;
-                            // order.selected_paymentline.mercury_record_no = response.record_no;
+                            order.selected_paymentline.mesomb_ref_no = response.name;
+                            order.selected_paymentline.mesomb_record_no = response.pk;
                             // order.selected_paymentline.mercury_invoice_no = response.invoice_no;
                             // order.selected_paymentline.mercury_auth_code = response.auth_code;
                             order.selected_paymentline.mesomb_data = response; // used to reverse transactions
@@ -293,7 +300,7 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                             self.render();
 
                             def.resolve({
-                                message: response.message,
+                                message,
                                 auto_close: true,
                             });
                         }
@@ -305,8 +312,9 @@ odoo.define('pos_mesomb.PaymentScreen', function(require) {
                         //     self.retry_mesomb_transaction(def, response, retry_nr, true, self.credit_code_transaction, [parsed_result, def, retry_nr + 1]);
                         // } else { // not recoverable
                         // }
+                        order.selected_paymentline.set_payment_status('failed');
                         def.resolve({
-                            message: response.message,
+                            message,
                             auto_close: false
                         });
                     }

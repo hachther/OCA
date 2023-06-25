@@ -82,9 +82,9 @@ odoo.define('pos_mesomb.models', function (require) {
             data = JSON.parse(data);
 
             return {
-                status: data.success ? 'SUCCESS' : 'FAILURE',
+                status: data.status,
                 message: data.message || data.detail,
-                data: data.data,
+                data: data.transaction,
                 // amount: data.transaction?.trxamount,
                 // payer: data.transaction?.b_party,
                 // service: data.transaction?.service,
@@ -95,8 +95,8 @@ odoo.define('pos_mesomb.models', function (require) {
                 // acq_ref_data: tran_response.find("AcqRefData").text(),
                 // process_data: tran_response.find("ProcessData").text(),
                 // invoice_no: tran_response.find("InvoiceNo").text(),
-                // ref_no: data.transaction?.pk,
-                // record_no: tran_response.find("RecordNo").text(),
+                ref_no: data.transaction?.name,
+                record_no: data.transaction?.pk,
                 // purchase: parseFloat(tran_response.find("Purchase").text()),
                 // authorize: parseFloat(tran_response.find("Authorize").text()),
             };
