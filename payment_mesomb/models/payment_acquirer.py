@@ -43,7 +43,7 @@ class PaymentAcquirer(models.Model):
         for acquirer in self:
             if acquirer.state == 'test' and acquirer._mesomb_has_connected_account():
                 raise ValidationError(_(
-                    "You cannot set the acquirer to Test Mode while it is linked with your MeSomb "
+                    "You cannot set the acquirer to Test Mode while linked to your MeSomb "
                     "account."
                 ))
 

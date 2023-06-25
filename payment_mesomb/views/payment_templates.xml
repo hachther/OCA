@@ -19,13 +19,6 @@
                     <field name="mesomb_include_fees"/>
                     <field name="mesomb_currency_conversion"/>
                 </group>
-                <div name="mesomb_keys_link"
-                     attrs="{'invisible': ['|', ('provider', '!=', 'mesomb'), '&amp;', ('mesomb_secret_key', '!=', False), ('mesomb_access_key', '!=', False)]}">
-                    <a class="btn btn-link" role="button" href="https://dashboard.stripe.com/account/apikeys"
-                       target="_blank">
-                        Get your Secret and Publishable keys
-                    </a>
-                </div>
             </xpath>
         </field>
     </record>

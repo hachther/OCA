@@ -90,7 +90,7 @@ class PaymentTransaction(models.Model):
         elif status == 'SUCCESS':
             self._set_done()
         elif status == 'FAIL':
-            self._set_canceled("MeSomb: " + _("Canceled payment with status: %s", status))
+            self._set_canceled("MeSomb: " + _("Cancelled payment with status: %s", status))
             _logger.warning("An error occurred on transaction with reference %s (reason: %s)", self.reference, data.get('message'))
         else:
             self._set_error(
