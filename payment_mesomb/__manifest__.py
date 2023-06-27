@@ -3,7 +3,7 @@
 {
     'name': 'MeSomb Payment Acquirer',
     'summary': "Payment Acquirer: Allows to pay with mobile payments (Mobile Money, Orange Money, Airtel Money ...)",
-    'version': "15.0.1.0.0",
+    'version': "15.0.1.0.1",
     'category': 'Accounting/Payment Acquirers',
     'website': "https://mesomb.com",
     'author': "Hachther LLC <contact@hachther.com>",

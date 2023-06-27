@@ -85,8 +85,8 @@ class MeSombController(http.Controller):
             )
             return json.dumps(response)
         except requests.exceptions.RequestException:
-            _logger.exception("Unable to communicate with MeSomb")
-            raise ValidationError("MeSomb: " + _("Could not establish the connection to the API."))
+            _logger.exception("Error wit MeSomb service %s", json.dumps(response))
+            raise ValidationError("Detail: " + response.get('detail', _("Could not establish the connection to the API.")))
         except Exception as e:
             _logger.error("error during the payment: %s", json.dumps(response))
             response['success'] = False
