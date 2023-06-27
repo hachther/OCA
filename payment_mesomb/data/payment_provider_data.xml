@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="payment_provider_mesomb" model="payment.provider">
+        <field name="name">MeSomb</field>
+        <field name="image_128" type="base64" file="payment_mesomb/static/src/img/icon.png"/>
+        <field name="code">mesomb</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="payment_icon_ids" eval="[(6, 0, [ ref('icon_mobile_money'), ref('icon_orange_money')])]"/>
+        <field name="inline_form_view_id" ref="inline_form"/>
+        <field name="support_refund"></field>
+        <field name="support_tokenization">True</field>
+        <field name="allow_tokenization">True</field>
+    </record>
+
+</odoo>
