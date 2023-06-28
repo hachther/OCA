@@ -57,14 +57,14 @@ class MeSombController(http.Controller):
                 'name': tx_sudo.partner_name,
                 'phone': tx_sudo.partner_phone or None,
             },
-            # 'products': [
-            #     {
-            #         'name': reference,
-            #         'amount': converted_amount,
-            #         'quantity': 1,
-            #     }
-            # ],
-            'source': 'Odoo ',
+            'products': [
+                {
+                    'name': reference,
+                    'amount': converted_amount,
+                    'quantity': 1,
+                }
+            ],
+            'source': 'Odoo',
             'location': {
                 'ip': payment_utils.get_customer_ip_address(),
             }

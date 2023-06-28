@@ -1,9 +1,9 @@
 # Copyright 2023 Hachther
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    'name': 'MeSomb Payment Acquirer',
+    'name': 'Payment Provider: MeSomb',
     'summary': "Payment Acquirer: Allows to pay with mobile payments (Mobile Money, Orange Money, Airtel Money ...)",
-    'version': "16.0.1.0.0",
+    'version': "16.0.1.0.1",
     'category': 'Accounting/Payment Acquirers',
     'website': "https://mesomb.com",
     'author': "Hachther LLC <contact@hachther.com>",
