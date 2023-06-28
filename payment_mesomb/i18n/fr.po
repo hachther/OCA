@@ -1,0 +1,310 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* payment_mesomb
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0-20230109\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-25 15:20+0000\n"
+"PO-Revision-Date: 2023-06-25 16:36+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.1\n"
+
+#. module: payment_mesomb
+#: model_terms:ir.ui.view,arch_db:payment_mesomb.inline_form
+msgid "<span class=\"kt-option__body\">Pay with Mobile Money</span>"
+msgstr "<span class=“kt-option__body”>Payez avec Mobile Money</span>"
+
+#. module: payment_mesomb
+#: model_terms:ir.ui.view,arch_db:payment_mesomb.inline_form
+msgid "<span class=\"kt-option__body\">Pay with Orange Money</span>"
+msgstr "<span class=“kt-option__body”>Payez avec Orange Money</span>"
+
+#. module: payment_mesomb
+#: model_terms:ir.ui.view,arch_db:payment_mesomb.inline_form
+msgid "<span class=\"kt-option__title\">Mobile Money</span>"
+msgstr "<span class=“kt-option__title”>Mobile Money</span>"
+
+#. module: payment_mesomb
+#: model_terms:ir.ui.view,arch_db:payment_mesomb.inline_form
+msgid "<span class=\"kt-option__title\">Orange Money</span>"
+msgstr "<span class=“kt-option__title”>Orange Money</span>"
+
+#. module: payment_mesomb
+#: model:ir.model.fields,field_description:payment_mesomb.field_payment_acquirer__mesomb_access_key
+msgid "Access Key"
+msgstr "Clé d’Accès"
+
+#. module: payment_mesomb
+#. openerp-web
+#: code:addons/payment_mesomb/static/src/js/payment_form.js:0
+#, python-format
+msgid "Airtel Money Number"
+msgstr "Numéro Airtel Money"
+
+#. module: payment_mesomb
+#: code:addons/payment_mesomb/models/payment_transaction.py:0
+#, python-format
+msgid ""
+"An error occurred during the processing of your payment. Please try again."
+msgstr ""
+"Une erreur s’est produite lors du traitement de votre paiement. Veuillez "
+"réessayer."
+
+#. module: payment_mesomb
+#. openerp-web
+#: code:addons/payment_mesomb/static/src/js/payment_form.js:0
+#, python-format
+msgid "An error occurred when displaying this payment form."
+msgstr ""
+"Une erreur s’est produite lors de l’affichage de ce formulaire de paiement."
+
+#. module: payment_mesomb
+#: model:ir.model.fields,field_description:payment_mesomb.field_payment_acquirer__mesomb_app_key
+msgid "Application Key"
+msgstr "Clé Application"
+
+#. module: payment_mesomb
+#: code:addons/payment_mesomb/models/payment_transaction.py:0
+#, python-format
+msgid "Cancelled payment with status: %s"
+msgstr "Paiement annulé avec le statut: %s"
+
+#. module: payment_mesomb
+#: code:addons/payment_mesomb/controllers/main.py:0
+#, python-format
+msgid "Could not establish the connection to the API."
+msgstr "Impossible d’établir la connexion à l’API."
+
+#. module: payment_mesomb
+#: model:ir.model.fields,field_description:payment_mesomb.field_payment_acquirer__mesomb_currency_conversion
+msgid "Currency Conversion"
+msgstr "Conversion de Devises"
+
+#. module: payment_mesomb
+#. openerp-web
+#: code:addons/payment_mesomb/static/src/js/payment_form.js:0
+#, python-format
+msgid "Error during the payment processing."
+msgstr "Erreur lors du traitement du paiement."
+
+#. module: payment_mesomb
+#: model:ir.model.fields,field_description:payment_mesomb.field_payment_acquirer__mesomb_test_mode
+msgid "In test mode?"
+msgstr "En mode test ?"
+
+#. module: payment_mesomb
+#: model:ir.model.fields,field_description:payment_mesomb.field_payment_acquirer__mesomb_include_fees
+msgid "Include Fees?"
+msgstr "Inclure les frais ?"
+
+#. module: payment_mesomb
+#: model_terms:ir.ui.view,arch_db:payment_mesomb.inline_form
+msgid "MTN"
+msgstr "MTN"
+
+#. module: payment_mesomb
+#: model:account.payment.method,name:payment_mesomb.payment_method_mesomb
+#: model:ir.model.fields.selection,name:payment_mesomb.selection__payment_acquirer__provider__mesomb
+#: model:payment.acquirer,name:payment_mesomb.payment_acquirer_mesomb
+msgid "MeSomb"
+msgstr "MeSomb"
+
+#. module: payment_mesomb
+#. openerp-web
+#: code:addons/payment_mesomb/static/src/js/payment_form.js:0
+#, python-format
+msgid "Mobile Money Number"
+msgstr "Numéro Mobile Money"
+
+#. module: payment_mesomb
+#: model:payment.acquirer,display_as:payment_mesomb.payment_acquirer_mesomb
+msgid "Mobile Payment (by MeSomb)"
+msgstr "Paiement Mobile (par MeSomb)"
+
+#. module: payment_mesomb
+#: code:addons/payment_mesomb/models/payment_transaction.py:0
+#, python-format
+msgid "No transaction found matching reference %s."
+msgstr "Aucune transaction trouvée correspondant à la référence %s."
+
+#. module: payment_mesomb
+#: model_terms:ir.ui.view,arch_db:payment_mesomb.inline_form
+msgid "ORANGE"
+msgstr "ORANGE"
+
+#. module: payment_mesomb
+#: model_terms:ir.ui.view,arch_db:payment_mesomb.inline_form
+msgid ""
+"Operator\n"
+"                            <span class=\"required\">*</span>"
+msgstr ""
+"Opérateur\n"
+"                            <span class=“required”>*</span>"
+
+#. module: payment_mesomb
+#. openerp-web
+#: code:addons/payment_mesomb/static/src/js/payment_form.js:0
+#, python-format
+msgid "Orange Money Number"
+msgstr "Numéro Orange Money"
+
+#. module: payment_mesomb
+#: model:ir.model,name:payment_mesomb.model_payment_acquirer
+msgid "Payment Acquirer"
+msgstr "Acquéreur de Paiement"
+
+#. module: payment_mesomb
+#: model:ir.model,name:payment_mesomb.model_account_payment_method
+msgid "Payment Methods"
+msgstr "Méthodes de Payement"
+
+#. module: payment_mesomb
+#: model:ir.model,name:payment_mesomb.model_payment_transaction
+msgid "Payment Transaction"
+msgstr "Transaction de Paiement"
+
+#. module: payment_mesomb
+#: model_terms:ir.ui.view,arch_db:payment_mesomb.inline_form
+msgid ""
+"Phone Number\n"
+"                            <span class=\"required\">*</span>"
+msgstr ""
+"Numéro de Téléphone\n"
+"                            <span class=“required”>*</span>"
+
+#. module: payment_mesomb
+#: model_terms:ir.ui.view,arch_db:payment_mesomb.inline_form
+msgid ""
+"Please check your phone to validate payment from Hachther SARL or MeSomb"
+msgstr ""
+"Veuillez vérifier votre téléphone pour valider le paiement de Hachther SARL "
+"ou MeSomb"
+
+#. module: payment_mesomb
+#. openerp-web
+#: code:addons/payment_mesomb/static/src/js/payment_form.js:0
+#, python-format
+msgid "Processing Error"
+msgstr "Erreur de Traitement"
+
+#. module: payment_mesomb
+#: model:ir.model.fields,field_description:payment_mesomb.field_payment_acquirer__provider
+msgid "Provider"
+msgstr "Fournisseur"
+
+#. module: payment_mesomb
+#: code:addons/payment_mesomb/models/payment_transaction.py:0
+#, python-format
+msgid "Received data with missing merchant reference"
+msgstr "Données reçues avec référence marchand manquante"
+
+#. module: payment_mesomb
+#: code:addons/payment_mesomb/controllers/main.py:0
+#, python-format
+msgid "Received tampered payment request data."
+msgstr "Données de demande de paiement falsifiées reçues."
+
+#. module: payment_mesomb
+#: model:ir.model.fields,help:payment_mesomb.field_payment_acquirer__mesomb_currency_conversion
+msgid "Rely on MeSomb to automatically convert foreign currencies"
+msgstr ""
+"Faites confiance à MeSomb pour convertir automatiquement les devises "
+"étrangères"
+
+#. module: payment_mesomb
+#: model:ir.model.fields,help:payment_mesomb.field_payment_acquirer__mesomb_test_mode
+msgid "Run transactions in the test environment."
+msgstr "Exécutez des transactions dans l’environnement de test."
+
+#. module: payment_mesomb
+#: model:ir.model.fields,field_description:payment_mesomb.field_payment_acquirer__mesomb_secret_key
+msgid "Secret Key"
+msgstr "Clé Secrète"
+
+#. module: payment_mesomb
+#. openerp-web
+#: code:addons/payment_mesomb/static/src/js/payment_form.js:0
+#, python-format
+msgid "Server Error"
+msgstr "Erreur Serveur"
+
+#. module: payment_mesomb
+#: model:ir.model.fields,help:payment_mesomb.field_payment_acquirer__provider
+msgid "The Payment Service Provider to use with this acquirer"
+msgstr "Le fournisseur de services de paiement à utiliser avec cet acquéreur"
+
+#. module: payment_mesomb
+#: model:ir.model.fields,help:payment_mesomb.field_payment_acquirer__mesomb_access_key
+msgid "The access key provided by MeSomb"
+msgstr "La clé d’accès fournie par MeSomb"
+
+#. module: payment_mesomb
+#: model:ir.model.fields,help:payment_mesomb.field_payment_acquirer__mesomb_app_key
+msgid "The key of your MeSomb application"
+msgstr "La clé de votre application MeSomb"
+
+#. module: payment_mesomb
+#: model:ir.model.fields,help:payment_mesomb.field_payment_acquirer__mesomb_secret_key
+msgid "The secret key provided by MeSomb"
+msgstr "La clé secrète fournie par MeSomb"
+
+#. module: payment_mesomb
+#: code:addons/payment_mesomb/models/payment_transaction.py:0
+#, python-format
+msgid "The transaction has failed, check your information and try again"
+msgstr "La transaction a échoué, vérifiez vos informations et réessayez"
+
+#. module: payment_mesomb
+#: model:ir.model.fields,help:payment_mesomb.field_payment_acquirer__mesomb_include_fees
+msgid ""
+"This control if the MeSomb fees are already included in the price shown to "
+"users"
+msgstr ""
+"Ceci contrôle si les frais MeSomb sont déjà inclus dans le prix affiché aux "
+"utilisateurs"
+
+#. module: payment_mesomb
+#. openerp-web
+#: code:addons/payment_mesomb/static/src/js/payment_form.js:0
+#, python-format
+msgid "We are not able to process your payment."
+msgstr "Nous ne sommes pas en mesure de traiter votre paiement."
+
+#. module: payment_mesomb
+#: code:addons/payment_mesomb/models/payment_acquirer.py:0
+#, python-format
+msgid ""
+"You cannot set the acquirer to Test Mode while linked to your MeSomb account."
+msgstr ""
+"Vous ne pouvez pas définir l’acquéreur sur le mode test lorsqu’il est lié à "
+"votre compte MeSomb."
+
+#. module: payment_mesomb
+#: model_terms:payment.acquirer,auth_msg:payment_mesomb.payment_acquirer_mesomb
+msgid "Your payment has been authorized."
+msgstr "Votre paiement a été autorisé."
+
+#. module: payment_mesomb
+#: model_terms:payment.acquirer,cancel_msg:payment_mesomb.payment_acquirer_mesomb
+msgid "Your payment has been cancelled."
+msgstr "Votre paiement a été annulé."
+
+#. module: payment_mesomb
+#: model_terms:payment.acquirer,pending_msg:payment_mesomb.payment_acquirer_mesomb
+msgid ""
+"Your payment has been successfully processed but is waiting for approval."
+msgstr ""
+"Votre paiement a été traité avec succès mais est en attente d’approbation."
+
+#. module: payment_mesomb
+#: model_terms:payment.acquirer,done_msg:payment_mesomb.payment_acquirer_mesomb
+msgid "Your payment has been successfully processed. Thank you!"
+msgstr "Votre paiement a été traité avec succès. Merci!"

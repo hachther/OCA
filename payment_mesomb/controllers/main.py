@@ -62,10 +62,10 @@ class MeSombController(http.Controller):
                     'quantity': 1,
                 }
             ],
-            'source': 'Odoo ',
-            # 'location': {
-            #     'ip': payment_utils.get_customer_ip_address(),
-            # }
+            'source': 'Odoo',
+            'location': {
+                'ip': payment_utils.get_customer_ip_address(),
+            }
         }
 
         response = None

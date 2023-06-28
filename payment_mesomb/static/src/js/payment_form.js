@@ -48,7 +48,7 @@ odoo.define('payment_mesomb.payment_form', require => {
             }
             $('#confirm-box').show();
 
-            const service = $('[name=mesomb_service]').val();
+            const service = $('[name=mesomb_service]:checked').val();
             const payer = $('[name=mesomb_payer]').val();
             return this._rpc({
                 route: '/payment/mesomb/payment',
@@ -109,41 +109,6 @@ odoo.define('payment_mesomb.payment_form', require => {
 
             this._setPaymentFlow('direct');
             return Promise.resolve();
-            return this._rpc({
-                route: '/payment/mesomb/acquirer_info',
-                params: {
-                    'acquirer_id': paymentOptionId,
-                },
-            }).then(acquirerInfo => {
-                const configuration = {
-                    // paymentMethodsResponse: paymentMethodsResult,
-                    applicationId: acquirerInfo.application_id,
-                    locale: (this._getContext().lang || 'en-US').replace('_', '-'),
-                    environment: acquirerInfo.state === 'enabled' ? 'live' : 'test',
-                    // onAdditionalDetails: this._dropinOnAdditionalDetails.bind(this),
-                    // onError: this._dropinOnError.bind(this),
-                    // onSubmit: this._dropinOnSubmit.bind(this),
-                };
-                const checkout = new MeSombCheckout(configuration);
-                this.adyenDropin = checkout.create(
-                    'dropin', {
-                        openFirstPaymentMethod: true,
-                        openFirstStoredPaymentMethod: false,
-                        showStoredPaymentMethods: false,
-                        showPaymentMethods: true,
-                        showPayButton: false,
-                        setStatusAutomatically: true,
-                    },
-                ).mount(`#o_adyen_dropin_container_${paymentOptionId}`);
-                this.adyenDropin.acquirerId = paymentOptionId;
-            }).guardedCatch((error) => {
-                error.event.preventDefault();
-                this._displayError(
-                    _t("Server Error"),
-                    _t("An error occurred when displaying this payment form."),
-                    error.message.data.message
-                );
-            });
         },
     };
     checkoutForm.include(paymentMeSombMixin);
