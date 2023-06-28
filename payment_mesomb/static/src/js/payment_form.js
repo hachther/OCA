@@ -48,7 +48,7 @@ odoo.define('payment_mesomb.payment_form', require => {
             }
             $('#confirm-box').show();
 
-            const service = $('[name=mesomb_service]').val();
+            const service = $('[name=mesomb_service]:checked').val();
             const payer = $('[name=mesomb_payer]').val();
             return this._rpc({
                 route: '/payment/mesomb/payment',

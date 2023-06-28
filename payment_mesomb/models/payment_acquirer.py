@@ -79,7 +79,7 @@ class PaymentAcquirer(models.Model):
         url = self.build_url(endpoint)
         nonce = generate_nonce()
         date = datetime.now()
-        # reference = payload.pop('reference')
+        reference = payload.pop('reference')
 
         if payload:
             payload['conversion'] = self.mesomb_currency_conversion
@@ -95,7 +95,7 @@ class PaymentAcquirer(models.Model):
             'Authorization': authorization,
             'X-MeSomb-Application': self.mesomb_app_key,
             'X-MeSomb-OperationMode': mode,
-            # 'X-MeSomb-TrxID': reference,
+            'X-MeSomb-TrxID': reference,
         }
 
         return requests.request(method, url, json=payload, headers=headers, timeout=60)
